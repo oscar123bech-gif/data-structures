@@ -49,6 +49,18 @@ def postorder(root):
     postorder(root.right)
     print(root.data, end=" ")
 
+def search(root,key):
+    if root is None:
+        return None
+    elif key == root.data:
+        return root
+    elif key > root.data:
+        return search(root.right,key)
+    else:
+        return search(root.left,key)
+
+
+
 
 
 print("pick one of the 3")
@@ -56,7 +68,7 @@ print("pick one of the 3")
 print("1 = inorder")
 print("2 = preorder")
 print("3 = postorder")
-
+print("4 = search")
 choice = input("enter choice: ")
 
 if choice == "1":
@@ -65,5 +77,12 @@ elif choice == "2":
     preorder(root)
 elif choice == "3":
     postorder(root)
+elif choice == "4":
+    key = int(input("What do you want the key to be???: "))
+    answer = search(root,key)
+    if answer:
+        print ("it was found")
+    else:
+        print ("try again it wasn't here")
 else:
     print("wrong input")
